@@ -3,7 +3,28 @@ require_once $_SERVER['DOCUMENT_ROOT'].'/classesDao/ComoSoubeDao.php';
 require_once $_SERVER['DOCUMENT_ROOT'].'/especial/Pagina.php';
 
 class Index extends Pagina{
-   public function exibirBody() {
+   public function exibirHead() {
+      parent::exibirHead();
+      ?>
+<script>
+   $(document).ready(function(){
+      $("#selectComoSoube").on('change', function (){
+         var a = $(this).val();
+         if(a == 7){
+            $("#inputComoSoube").empty();
+            $("#inputComoSoube").attr("readonly", false);
+            $("#inputComoSoube").empty();
+         }else{
+            $("#inputComoSoube").attr("readonly", true);
+         }
+      });
+   });
+</script>
+
+      <?php
+   }
+
+      public function exibirBody() {
       parent::exibirBody();
       $this->exibirPagInicial();      
    }
@@ -16,7 +37,8 @@ class Index extends Pagina{
             <div class="titulo">
                <h1>
                   <strong>
-                  Nome do questionário
+                     Pesquisa de Stisfação<br>
+                     Pint of Science Teresina 2017
                   </strong>
                </h1>
             </div>
@@ -47,7 +69,7 @@ class Index extends Pagina{
             <div class="row">
                <div class="form-group col-sm-6">
                   <label>Como soube</label>
-                  <select class="form-control" name="comoSoube">
+                  <select class="form-control" name="comoSoube" id="selectComoSoube">
                      <?php
                      $comoSoube = new ComoSoubeDao();
                      $result = $comoSoube->getAll();         
@@ -56,7 +78,7 @@ class Index extends Pagina{
                      }
                      ?>
                   </select>
-                  <input class="form-control" name="outros" placeholder="Caso outros meios preencher aqui">
+                  <input readonly class="form-control" name="outros" placeholder="Caso outros meios preencher aqui" id="inputComoSoube">
                </div>
                <div class="form-group col-sm-6">
                   <label>Importância e criatividade do tema</label><br>
