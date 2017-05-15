@@ -56,7 +56,7 @@ class Index extends Pagina{
                      }
                      ?>
                   </select>
-                  <input class="form-control" name="outros" placeholder="Outros">
+                  <input class="form-control" name="outros" placeholder="Caso outros meios preencher aqui">
                </div>
                <div class="form-group col-sm-6">
                   <label>Importância e criatividade do tema</label><br>
