@@ -59,11 +59,18 @@ class Pagina {
         </div>
         <div class="collapse navbar-collapse" id="myNavbar">
           <ul class="nav navbar-nav">
+            <li class="dropdown">
+              <a class="dropdown-toggle" data-toggle="dropdown" href="#">Registros<span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                 <li><a href="/view/registros.php">Visualizar registros</a></li>
+                 <li><a href="/">Fazer um registros</a></li>
+              </ul>
+            </li>
             
           </ul>
           <ul class="nav navbar-nav navbar-right">
             <li class="dropdown">
-                <a class="dropdown-toggle" data-toggle="dropdown" href="#"> <?php echo ';)'; ?></a>
+               <a class="dropdown-toggle" data-toggle="dropdown" href="/view/registros.php"> <?php echo ';)'; ?></a>
                 
                 
             </li>
