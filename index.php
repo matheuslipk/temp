@@ -56,6 +56,7 @@ class Index extends Pagina{
                      }
                      ?>
                   </select>
+                  <input class="form-control" name="outros" placeholder="Outros">
                </div>
                <div class="form-group col-sm-6">
                   <label>Importância e criatividade do tema</label><br>
@@ -88,7 +89,7 @@ class Index extends Pagina{
             
             <div class="row">
                <div class="form-group col-sm-6">
-                  <label>Quais temas você gostaria de ver no Pint 2017?</label>
+                  <label>Quais temas você gostaria de ver no Pint 2018?</label>
                   <input class="form-control" name="sugerirTema">
                </div>
                

@@ -30,6 +30,7 @@ class entrevistaMae extends Pagina{
                   <td>Ocupação</td>
                   <td>Email</td>
                   <td>Como ficou sabendo?</td>
+                  <td>Outros</td>
                   <td>Importancia do tema</td>
                   <td>Interação</td>
                   <td>Atendimento</td>
@@ -49,6 +50,7 @@ class entrevistaMae extends Pagina{
                echo '<td>'.$registro['ocupacao'].'</td>';
                echo '<td>'.$registro['email'].'</td>';
                echo '<td>'.$registro['comoSoube'].'</td>';
+               echo '<td>'.$registro['outros'].'</td>';
                echo '<td>'.$registro['impTema'].'</td>';
                echo '<td>'.$registro['interacao'].'</td>';
                echo '<td>'.$registro['atendimento'].'</td>';

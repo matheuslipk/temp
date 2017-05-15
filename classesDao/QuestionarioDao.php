@@ -5,10 +5,10 @@ class QuestionarioDao {
    public function inserirQuestionario($array){
       
       $con = ConexaoDao::getConecao();
-      $query = "INSERT INTO questionario VALUES (NULL,?,?,?,?,?,?,?,?,?,?)";
+      $query = "INSERT INTO questionario VALUES (NULL,?,?,?,?,?,?,?,?,?,?,?)";
       $stmt = $con->prepare($query);
-      $stmt->bind_param("sissiiiiss",$array['nome'], $array['idade'],
-              $array['ocupacao'], $array['email'], $array['comoSoube'], 
+      $stmt->bind_param("sissisiiiss",$array['nome'], $array['idade'],
+              $array['ocupacao'], $array['email'], $array['comoSoube'], $array['outros'],
               $array['impTema'], $array['interacao'], $array['atendimento'], 
               $array['sugerirTema'], $array['criticaSugestao']);
       if($stmt->execute()){
@@ -42,7 +42,7 @@ class QuestionarioDao {
    public function getAllQuestionario(){
       $con = ConexaoDao::getConecao();
       $query = "SELECT q.idQuestionario, q.nome, q.idade, q.ocupacao, q.email, "
-              . "c.descricao comoSoube, q.impTema, q.interacao, q.atendimento, "
+              . "c.descricao comoSoube, q.outros, q.impTema, q.interacao, q.atendimento, "
               . "q.sugerirTema, q.criticaSugestao FROM questionario q, comoSoube c "
               . "WHERE q.comoSoube=c.id";
       $stmt = $con->prepare($query);
