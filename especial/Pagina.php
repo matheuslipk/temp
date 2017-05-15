@@ -62,8 +62,9 @@ class Pagina {
             <li class="dropdown">
               <a class="dropdown-toggle" data-toggle="dropdown" href="#">Registros<span class="caret"></span></a>
               <ul class="dropdown-menu">
-                 <li><a href="/view/registros.php">Visualizar registros</a></li>
                  <li><a href="/">Novo registro</a></li>
+                 <li><a href="/view/registros.php">Visualizar registros</a></li>
+                 
               </ul>
             </li>
             
