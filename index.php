@@ -1,6 +1,5 @@
 <?php
-require_once $_SERVER['DOCUMENT_ROOT'].'/classesDao/ProntuarioDao.php';
-require_once $_SERVER['DOCUMENT_ROOT'].'/classesDao/TipoHospitalDao.php';
+require_once $_SERVER['DOCUMENT_ROOT'].'/classesDao/ComoSoubeDao.php';
 require_once $_SERVER['DOCUMENT_ROOT'].'/especial/Pagina.php';
 
 class Index extends Pagina{
@@ -18,79 +17,93 @@ class Index extends Pagina{
             <div class="titulo">
                <h1>
                   <strong>
-                  QUESTIONÁRIO DE INVESTIGAÇÃO DE CASOS SUSPEITOS DE MICROCEFALIA
+                  Nome do questionário
                   </strong>
                </h1>
             </div>
          </div>
-         <form action="/controll/0.0-prontuario/criarProntuario.php">
+         <form method="post" action="/controll/questionario/inserirQuestionario.php">
             <div class="row">
-               <div class="form-group col-xs-12">
-                  <label>Prontuário</label>
-                  <input name="prontuario" type="number" class="form-control">
+               <div class="form-group col-sm-6">
+                  <label>Nome</label>
+                  <input required name="nome" class="form-control">
+               </div>
+               <div class="form-group col-sm-6">
+                  <label>Idade</label>
+                  <input required name="idade" type="number" class="form-control">
                </div>
             </div>
+            
+            <div class="row">
+               <div class="form-group col-sm-6">
+                  <label>Ocupação</label>
+                  <input required name="ocupacao" class="form-control">
+               </div>
+               <div class="form-group col-sm-6">
+                  <label>Email</label>
+                  <input required name="email" type="email" class="form-control">
+               </div>
+            </div>
+            
+            <div class="row">
+               <div class="form-group col-sm-6">
+                  <label>Como soube</label>
+                  <select class="form-control" name="comoSoube">
+                     <?php
+                     $comoSoube = new ComoSoubeDao();
+                     $result = $comoSoube->getAll();         
+                     foreach ($result as $opcao){
+                        echo "<option value='{$opcao['id']}'>".$opcao['descricao'].'</option>';
+                     }
+                     ?>
+                  </select>
+               </div>
+               <div class="form-group col-sm-6">
+                  <label>Importância e criatividade do tema</label><br>
+                  <label><input name="impTema" type="radio" value="1" required>Péssima</label>
+                  <label><input name="impTema" type="radio" value="2" required>Ruim</label>
+                  <label><input name="impTema" type="radio" value="3" required>Regular</label>
+                  <label><input name="impTema" type="radio" value="4" required>Bom</label>
+                  <label><input name="impTema" type="radio" value="5" required>Ótimo</label>
+               </div>
+            </div>
+            
+            <div class="row">
+               <div class="form-group col-sm-6">
+                  <label>Interação com o público</label><br>
+                  <label><input name="interacao" type="radio" value="1" required>Péssima</label>
+                  <label><input name="interacao" type="radio" value="2" required>Ruim</label>
+                  <label><input name="interacao" type="radio" value="3" required>Regular</label>
+                  <label><input name="interacao" type="radio" value="4" required>Bom</label>
+                  <label><input name="interacao" type="radio" value="5" required>Ótimo</label>
+               </div>
+               <div class="form-group col-sm-6">
+                  <label>Qualidade no atendimento do restaurante</label><br>
+                  <label><input name="atendimento" type="radio" value="1" required>Péssima</label>
+                  <label><input name="atendimento" type="radio" value="2" required>Ruim</label>
+                  <label><input name="atendimento" type="radio" value="3" required>Regular</label>
+                  <label><input name="atendimento" type="radio" value="4" required>Bom</label>
+                  <label><input name="atendimento" type="radio" value="5" required>Ótimo</label>
+               </div>
+            </div>
+            
+            <div class="row">
+               <div class="form-group col-sm-6">
+                  <label>Quais temas você gostaria de ver no Pint 2017?</label>
+                  <input class="form-control" name="sugerirTema">
+               </div>
+               
+               <div class="form-group col-sm-6">
+                  <label>Críticas e sugestões</label>
+                  <textarea name="criticaSugestao" class="form-control"></textarea>
+               </div>
+            </div>
+            
             <div>
                <button class="btn btn-primary" type="submit">Criar</button>
             </div>
          </form>
          
-         <div class="row">
-            <div class="col-sm-6 form-group">
-               <label>Questionários não terminados</label>
-               <input type="number" class="form-control"><br>
-               <table class="table table-condensed table-bordered" border="1">
-                  <thead>
-                     <tr>
-                        <th>Prontuário</th>
-                        <th>Criado por</th>
-                        <th>Data criação</th>
-                     </tr>
-                  </thead>
-                  <tbody style="font-size: ">
-                     <?php
-                        $prontuarioDao = new ProntuarioDao();
-                        $prontuarios = $prontuarioDao->getAllProntuarios();
-                        
-                        foreach ($prontuarios as $prontuario){
-                           echo "<tr></tr>";
-                           echo "<td><a class='btn btn-default' href='/view/1.0-servicoSaude.php?prontuario=".$prontuario['idProntuario']."'>{$prontuario['idProntuario']}</a></td>";
-                           echo "<td>".$prontuario['nome']."</td>";
-                           echo "<td>".$prontuario['dataCriacao']."</td>";
-                           echo "<tr></tr>";
-                        }       
-                     ?>                     
-                  </tbody>
-                  
-               </table>
-            </div>
-            
-            <div class="col-sm-6 form-group">
-               <label>Questionários concluídos</label>
-               <input type="number" class="form-control"><br>
-               <table class="table table-condensed table-bordered" border="1">
-                  <thead>
-                     <tr>
-                        <th>Prontuário</th>
-                        <th>Criado por</th>
-                        <th>Data criação</th>
-                     </tr>
-                  </thead>
-                  <tbody>
-                     <?php                        
-//                        foreach ($prontuarios as $prontuario){
-//                           echo "<tr></tr>";
-//                           echo "<td><a class='btn btn-default' href='/view/1.0-servicoSaude.php?prontuario=".$prontuario['idProntuario']."'>{$prontuario['idProntuario']}</a></td>";
-//                           echo "<td>".$prontuario['nome']."</td>";
-//                           echo "<td>".$prontuario['dataCriacao']."</td>";
-//                           echo "<tr></tr>";
-//                        }       
-                     ?>   
-                  </tbody>
-                  
-               </table>
-            </div>
-         </div>
         
                   
       </div>

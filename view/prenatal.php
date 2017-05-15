@@ -62,7 +62,7 @@ class entrevistaMae extends Pagina{
             <select class=" form-control" name="ufPrenatal" id="ufPrenatal">
                <?php
                $estadoDao = new EstadoDao();
-               $estados = $estadoDao->getAllEstados();
+               $estados = $estadoDao->getAll();
                foreach ($estados as $estado){
                   echo "<option value='{$estado['uf']}'>".$estado['nome']."</option>";
                }
