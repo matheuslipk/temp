@@ -39,6 +39,25 @@ class QuestionarioDao {
       return FALSE;
    }
    
+   public function getAllQuestionario(){
+      $con = ConexaoDao::getConecao();
+      $query = "SELECT q.idQuestionario, q.nome, q.idade, q.ocupacao, q.email, "
+              . "c.descricao comoSoube, q.impTema, q.interacao, q.atendimento, "
+              . "q.sugerirTema, q.criticaSugestao FROM questionario q, comosoube c "
+              . "WHERE q.comoSoube=c.id";
+      $stmt = $con->prepare($query);
+      if($stmt->execute()){
+         $result = $stmt->get_result();
+         $array = $result->fetch_all(MYSQLI_ASSOC);
+         $stmt->close();
+         $con->close();
+         return $array;
+      }
+      $stmt->close();
+      $con->close();
+      return FALSE;
+   }
+   
    public function updateQuestionario($array){      
       $con = ConexaoDao::getConecao();
       $query = "UPDATE questionario SET peso=?, estatura=?, perimToracico=?, "

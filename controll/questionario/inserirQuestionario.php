@@ -16,6 +16,7 @@ function inserirQuestionario(){
    $array['criticaSugestao'] = $_POST['criticaSugestao'];
    
    $questDao->inserirQuestionario($array);
+   header("Location: /?resultado=sucesso");
 }
 
 inserirQuestionario();

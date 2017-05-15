@@ -63,7 +63,7 @@ class Pagina {
           </ul>
           <ul class="nav navbar-nav navbar-right">
             <li class="dropdown">
-                <a class="dropdown-toggle" data-toggle="dropdown" href="#"> <?php echo 'Inserir dados'; ?></a>
+                <a class="dropdown-toggle" data-toggle="dropdown" href="#"> <?php echo ';)'; ?></a>
                 
                 
             </li>

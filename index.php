@@ -5,8 +5,7 @@ require_once $_SERVER['DOCUMENT_ROOT'].'/especial/Pagina.php';
 class Index extends Pagina{
    public function exibirBody() {
       parent::exibirBody();
-      $this->exibirPagInicial();
-      
+      $this->exibirPagInicial();      
    }
    
    public function exibirPagInicial(){
