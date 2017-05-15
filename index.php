@@ -37,7 +37,7 @@ class Index extends Pagina{
             <div class="titulo">
                <h1>
                   <strong>
-                     Pesquisa de Stisfação<br>
+                     Pesquisa de Satisfação<br>
                      Pint of Science Teresina 2017
                   </strong>
                </h1>
