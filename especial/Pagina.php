@@ -30,7 +30,7 @@ class Pagina {
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width, initial-scale=1">
       <link rel="stylesheet" href="/bootstrap/css/bootstrap.min.css">
-      <link rel="stylesheet" href="/bootstrap/css/meucss.css">
+      <!--<link rel="stylesheet" href="/bootstrap/css/meucss.css">-->
       <script src="/bootstrap/js/jquery-3.1.1.min.js"></script>
       <script src="/bootstrap/js/bootstrap.min.js"></script>
       <?php

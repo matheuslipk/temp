@@ -44,7 +44,7 @@ class QuestionarioDao {
       $query = "SELECT q.idQuestionario, q.nome, q.idade, q.ocupacao, q.email, "
               . "c.descricao comoSoube, q.outros, q.impTema, q.interacao, q.atendimento, "
               . "q.sugerirTema, q.criticaSugestao FROM questionario q, comosoube c "
-              . "WHERE q.comoSoube=c.id";
+              . "WHERE q.comoSoube=c.id ORDER BY q.idQuestionario DESC";
       $stmt = $con->prepare($query);
       if($stmt->execute()){
          $result = $stmt->get_result();
